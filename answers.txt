@@ -1,0 +1,68 @@
+1. How many degrees of freedom (DOF) does each joint have?
+
+	Thumb Joints:
+		Carpometacarpal (CMC) Joint:
+		2 DOF:
+		Flexion/Extension (moving across the palm or away from it).
+		Abduction/Adduction (moving away or toward the other fingers).
+		This joint also allows some rotation, but the primary motion is a combination of these two.
+		Metacarpophalangeal (MCP) Joint:
+		2 DOF:
+		Flexion/Extension.
+		Abduction/Adduction (but limited).
+		Interphalangeal (IP) Joint:
+		1 DOF:
+		Flexion/Extension (bending or straightening).
+	Fingers (Index, Middle, Ring, Pinky) Joints:
+		Metacarpophalangeal (MCP) Joint:
+		2 DOF:
+		Flexion/Extension (bending or straightening).
+		Abduction/Adduction (moving fingers apart or together).
+		Proximal Interphalangeal (PIP) Joint:
+		1 DOF:
+		Flexion/Extension (bending or straightening).
+		Distal Interphalangeal (DIP) Joint:
+		1 DOF:
+		Flexion/Extension (bending or straightening).
+
+2. Is there a way to compute the rotation matrices for each joint from their joint angles?
+
+	Yes, the rotation matrix can be computed using the joint angles. For example, given an angle 𝜃, the 2D rotation matrix is:
+		𝑅(𝜃) = 
+		[cos 𝜃  −sin 𝜃]
+		[sin 𝜃   cos 𝜃]
+	In this matrix, theta represents the angle of rotation. The matrix describes how the point's coordinates will change after
+	rotation. The cos(𝜃) and sin(𝜃) values represent how much the point shifts along the X and Y axes during the rotation.
+	For rotations in 3D, the situation becomes more complex because rotation can occur around any of the three axes: X, Y, or Z.
+	The rotation matrix will depend on the specific axis of rotation. For example:
+	Rotation around the X-axis:
+	R_x(𝜃) =
+	[ 1     0         0    ]
+	[ 0   cos(𝜃)   -sin(𝜃) ]
+	[ 0   sin(𝜃)    cos(𝜃) ]
+	Rotation around the Y-axis:
+	R_y(𝜃) =
+	[ cos(𝜃)   0   sin(𝜃) ]
+	[     0    1       0  ]
+	[ -sin(𝜃)  0   cos(𝜃) ]
+	Rotation around the Z-axis:
+	R_z(𝜃) =
+	[ cos(𝜃)   -sin(𝜃)   0 ]
+	[ sin(𝜃)    cos(𝜃)   0 ]
+	[  0          0      1 ]
+
+
+
+
+
+
+	
+3. How do we compute the length of each bone of the hand?
+
+	The length of each bone can be calculated by finding the Euclidean distance between two connected joint points:
+	Each joint point has 3D coordinates: (x1, y1, z1) for the first joint and (x2, y2, z2) for the second joint.
+	The formula of calculating the the length of the bone would be:
+	length = sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+
+
+
